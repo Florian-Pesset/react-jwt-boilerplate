@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const Login = () => {
+const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -11,15 +11,13 @@ const Login = () => {
       alert("Please specify both email and password");
     } else {
       axios
-        .post(`${REACT_APP_SERVER_ADDRESS}/login/`, {
+        .post(`${REACT_APP_SERVER_ADDRESS}/register/`, {
           email,
           password,
         })
         .then((res) => res.data)
         .then((data) => {
           console.log(data);
-          localStorage.setItem("TOKEN", data.token);
-          alert("Logged successfully");
         })
         .catch((error) => {
           console.log(error);
@@ -62,4 +60,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignIn;

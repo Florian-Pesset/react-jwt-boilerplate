@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const Users = () => {
   // eslint-disable-next-line no-unused-vars
   const [users, setUsers] = useState([]);
+  const token = localStorage.getItem("TOKEN");
 
   useEffect(() => {
-    // Your code here
+    const { REACT_APP_SERVER_ADDRESS } = process.env;
+    axios
+      .get(`${REACT_APP_SERVER_ADDRESS}/users/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((result) => setUsers(result.data));
   }, []);
 
   return (

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Users from "./components/Users";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
+import SignIn from "./components/SignIn";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
             <li>
               <Link to="/logout">Disconnect</Link>
             </li>
+            <li>
+              <Link to="/register">Sign In</Link>
+            </li>
           </ul>
         </nav>
 
@@ -31,6 +35,9 @@ function App() {
           </Route>
           <Route exact path="/logout">
             <Logout />
+          </Route>
+          <Route exact path="/register">
+            <SignIn />
           </Route>
         </Switch>
       </div>
